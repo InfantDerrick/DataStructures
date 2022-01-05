@@ -75,4 +75,89 @@ public class BBList<T> implements List<T> {
         return true;
     }
 
+    @Override
+    public boolean clear() {
+        return false;
+    }
+
+    @Override
+    public List clone() {
+        return null;
+    }
+
+    @Override
+    public void ensureCapacity() {
+
+    }
+
+    @Override
+    public int indexOf(T elem) {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public int lastIndexOf(int index) {
+        return 0;
+    }
+
+    @Override
+    public boolean remove(T elem) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(T elem) {
+        return false;
+    }
+
+    @Override
+    public boolean removeRange(int start, int end) {
+        return false;
+    }
+
+    @Override
+    public boolean replaceAll(T elem, T newElem) {
+        return false;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public void bubbleSort() {
+
+    }
+
+    @Override
+    public void selectionSort() {
+
+    }
+
+    @Override
+    public void mergeSort() {
+
+    }
+
+    @Override
+    public void quickSort() {
+
+    }
+
+    @Override
+    public T[] toArray() {
+        return null;
+    }
+
+    @Override
+    public void trimToSize(int size) {
+
+    }
+
 }
