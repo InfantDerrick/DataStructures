@@ -6,7 +6,7 @@ public interface List<T> {
     T get(int index);
     boolean set(int index, T elem);
     boolean clear();
-    List clone();
+    List<T> clone();
     void ensureCapacity();
     int indexOf(T elem);
     boolean isEmpty();
@@ -22,8 +22,4 @@ public interface List<T> {
     void quickSort();
     T[] toArray();
     void trimToSize(int size);
-
-
-
-
 }
