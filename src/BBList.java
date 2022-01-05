@@ -18,21 +18,25 @@ public class BBList<T> implements List<T> {
     @Override
     public boolean add(int index, T elem) {
         if(index > point) return false;
-        if(point == data.length) doubleSize();
+        if(point + 1 == data.length) changeByFactor(2);
         shiftRight(index);
         data[index] = elem;
-        point++;
         return true;
     }
-
-    private void doubleSize(){
-        T newData[] = (T[])new Object[point * 2];
-        for(int i = 0; i < data.length; i++) newData[i] = data[i];
+    private void changeByFactor(double factor){
+        T newData[] = (T[])new Object[(int)(factor * point)];
+        for(int i = 0; i < point; i++) newData[i] = data[i];
         data = newData;
     }
     private void shiftRight(int ind){
         for(int i = point; i > ind; i--)
             data[i] = data[i-1];
+        point++;
+    }
+    private void shiftLeft(int ind){
+        for(int i = ind; i < point; i++)
+            data[i] = data[i+1];
+        point--;
     }
     @Override
     public String toString(){
@@ -45,4 +49,30 @@ public class BBList<T> implements List<T> {
         sb.append("]");
         return sb.toString();
     }
+
+    @Override
+    public boolean remove(int index) {
+        if(index > point) return false;
+        if((point + 1) * 2 < data.length && data.length > 10) changeByFactor(0.75);
+        shiftLeft(index);
+        return true;
+    }
+
+    public boolean contains(T elem){
+        for(int i = 0; i < point; i++){
+            if(data[i].equals(elem)) return true;
+        }
+        return false;
+    }
+    //TODO: get and set
+    public T get(int index){
+        if(index < 0 || index >= point) throw new ArrayIndexOutOfBoundsException();
+        return data[index];
+    }
+    public boolean set(int index, T elem){
+        if(index < 0 || index >= point) throw new ArrayIndexOutOfBoundsException();
+        data[index] = elem;
+        return true;
+    }
+
 }
