@@ -94,7 +94,10 @@ public class BBList<T> implements List<T> {
 
     @Override
     public boolean clear() {
-        return false;
+        for(int i = 0; i < point; i++){
+            remove(i);
+        }
+        return true;
     }
 
     @Override
@@ -148,7 +151,7 @@ public class BBList<T> implements List<T> {
 
     @Override
     public int size() {
-        return 0;
+        return point;
     }
 
     @Override
@@ -173,12 +176,19 @@ public class BBList<T> implements List<T> {
 
     @Override
     public T[] toArray() {
-        return null;
+        if(data.length < 1) return null;
+        T elems[] = (T[])(new Object[point]);
+        for(int i =0; i < point; i++){
+            elems[i] = data[i];
+        }
+        return elems;
     }
 
     @Override
     public void trimToSize(int size) {
-
+        for(int i = point; i > size; i--){
+            remove(i);
+        }
     }
 
 }
