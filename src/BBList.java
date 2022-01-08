@@ -2,14 +2,31 @@ public class BBList<T> implements List<T> {
     private T data[];
     private int point;
 
+    /**
+     * creates
+     */
     public BBList(){
         data = (T[])(new Object[10]);
         point = 0;
     }
+
+    /**
+     *
+     * @param initialCapacity creates an array with size
+     */
     public BBList(int initialCapacity){
         data = (T[])(new Object[initialCapacity > 1 ? initialCapacity : 10]);
         point = 0;
     }
+
+    public BBList(T[] elems){
+        if(elems.length < 10) data = (T[])(new Object[10]);
+        else data =(T[])(new Object[elems.length]);
+        for(int i =0; i < elems.length; i++){
+            data[i] = elems[i];
+        }
+    }
+
     @Override
     public boolean add(T elem) {
         return add(point, elem);
@@ -122,7 +139,11 @@ public class BBList<T> implements List<T> {
 
     @Override
     public boolean replaceAll(T elem, T newElem) {
-        return false;
+        if(point < 1) return false;
+        for(int i = 0; i < point; i++){
+            if(data[i].equals(elem)) data[i] = newElem;
+        }
+        return true;
     }
 
     @Override

@@ -9,7 +9,11 @@ public class Driver {
         for(int i = 0; i < 15; i++) bb.add(i);
         for(int i = 0; i < 7; i++) bb.remove(i);
         bb.remove(5);
+        bb.replaceAll(2,3);
         bb.get(-1);
+        BBList<String> baby = new BBList<>();
+        baby.add("meow meow");
+
         System.out.println(bb);
 
     }
