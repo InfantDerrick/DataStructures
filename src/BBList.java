@@ -25,6 +25,7 @@ public class BBList<T> implements List<T> {
         for(int i =0; i < elems.length; i++){
             data[i] = elems[i];
         }
+        point = elems.length;
     }
 
     @Override
