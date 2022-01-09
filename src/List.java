@@ -7,10 +7,10 @@ public interface List<T> {
     boolean set(int index, T elem);
     boolean clear();
     List<T> clone();
-    void ensureCapacity();
+    void ensureCapacity(int toAdd);
     int indexOf(T elem);
     boolean isEmpty();
-    int lastIndexOf(int index);
+    int lastIndexOf(T elem);
     boolean remove(T elem);
     boolean removeAll(T elem);
     boolean removeRange(int start, int end);

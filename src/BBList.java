@@ -25,6 +25,7 @@ public class BBList<T> implements List<T> {
         for(int i =0; i < elems.length; i++){
             data[i] = elems[i];
         }
+        point = elems.length;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class BBList<T> implements List<T> {
         return true;
     }
     private void changeByFactor(double factor){
-        T newData[] = (T[])new Object[(int)(factor * point)];
+        T newData[] = (T[])new Object[(int)(factor * data.length)];
         for(int i = 0; i < point; i++) newData[i] = data[i];
         data = newData;
     }
@@ -106,13 +107,16 @@ public class BBList<T> implements List<T> {
     }
 
     @Override
-    public void ensureCapacity() {
+    public void ensureCapacity(int toAdd) {
 
     }
 
     @Override
     public int indexOf(T elem) {
-        return 0;
+        for(int i = 0; i < point; i++){
+            if(data[i].equals(elem)) return i;
+        }
+        return -1;
     }
 
     @Override
@@ -121,23 +125,41 @@ public class BBList<T> implements List<T> {
     }
 
     @Override
-    public int lastIndexOf(int index) {
-        return 0;
+    public int lastIndexOf(T elem) {
+        for(int i = point-1; i >= 0; i--){
+            if(data[i].equals(elem)) return i;
+        }
+        return -1;
     }
 
     @Override
     public boolean remove(T elem) {
-        return false;
+        for(int i =0; i < point; i++){
+            if(data[i].equals(elem)) remove(i);
+            else return false;
+        }
+        return true;
     }
 
     @Override
     public boolean removeAll(T elem) {
-        return false;
+        for(int i = 0; i < point; i++){
+            if(data[i].equals(elem)) remove(i);
+            else return false;
+        }
+        return true;
     }
 
     @Override
     public boolean removeRange(int start, int end) {
-        return false;
+        if(start < 0 || end > point || start > end) return false;
+        else {
+            for (int i = start; i <= end; i++) {
+                remove(i);
+            }
+            return true;
+        }
+
     }
 
     @Override
@@ -186,7 +208,7 @@ public class BBList<T> implements List<T> {
 
     @Override
     public void trimToSize(int size) {
-        for(int i = point; i > size; i--){
+        for(int i = point-1; i > size; i--){
             remove(i);
         }
     }
