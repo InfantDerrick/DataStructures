@@ -7,6 +7,8 @@ public class Driver {
     public static void main(String[] args){
         testAdd();
         testRemove();
+        BBList<String> list = new BBList<>(new String[]{"Hello"});
+        System.out.println(list);
     }
 
     public static void testAdd(){
@@ -23,6 +25,6 @@ public class Driver {
 
     }
     public static void testDifferentConstructors(){
-        
+
     }
 }
